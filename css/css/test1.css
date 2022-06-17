@@ -1,3 +1,37 @@
-body {
-  background-color: red;
+* {
+  /* Permet de ne pas compter le padding et le border dans la largeur des éléments */
+  box-sizing: border-box;
+}
+
+figure {
+  max-width: 15%;
+  position: relative;
+}
+
+figcaption {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  
+}
+
+#jb {
+  /* 100% max de son conteneur */
+  max-width: 100%;
+}
+
+.clear-fix {
+  clear: left;
+}
+
+.col {
+  float: left;
+  width: 25%;
+
+}
+
+.col>div {
+  padding: 20px;
 }
