@@ -1,8 +1,7 @@
 * {
-  /* Permet de ne pas compter le padding et le border dans la largeur des éléments */
   box-sizing: border-box;
 }
-
+ /* 
 figure {
   max-width: 15%;
   position: relative;
@@ -18,7 +17,7 @@ figcaption {
 }
 
 #jb {
-  /* 100% max de son conteneur */
+  /* 100% max de son conteneur
   max-width: 100%;
 }
 
@@ -34,4 +33,18 @@ figcaption {
 
 .col>div {
   padding: 20px;
+}
+
+span {
+  padding: 30px;
+  margin: 30px;
+} */
+p {
+  padding: 30px;
+  border: 10px solid red;
+  line-height: 1.5em;
+}
+
+img {
+  width: 80%;
 }
