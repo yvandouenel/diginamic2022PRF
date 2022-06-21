@@ -1,0 +1,8 @@
+/* Définition d'une variable */
+$primary-color: blue;
+$secondary-color: green;
+
+$colors: (
+  primary: $primary-color,
+  secondary: $secondary-color,
+);

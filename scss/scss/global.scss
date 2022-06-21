@@ -1,8 +1,7 @@
-/* Définition d'une variable */
-$primary-color: rgb(221, 32, 32);
+
 body {
-  /* Utilisation de la variable */
-  color: $primary-color;
+  /* Utilisation d'un map (tableau) */
+  color: map-get($colors, "secondary" );
 }
 /* navigation principale en utilisant l'imbrication */
 #main-nav {
@@ -26,19 +25,7 @@ body {
   }
 }
 
-/* Mixin */
-@mixin button($bgcolor, $color, $hover_color: blue) {
-  padding: 8px;
-  border-radius: 8px;
-  background-color: $bgcolor;
-  color: $color;
-  display: inline-block;
-  margin: 5px;
-  &:hover {
-    cursor: pointer;
-    background-color: $hover_color;
-  }
-}
+
 /* Appel de la mixin */
 .btn {
   @include button($color: white,$bgcolor: grey);

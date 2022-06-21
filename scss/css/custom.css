@@ -1,8 +1,9 @@
 @charset "UTF-8";
 /* Définition d'une variable */
+/* Mixin */
 body {
-  /* Utilisation de la variable */
-  color: #dd2020;
+  /* Utilisation d'un map (tableau) */
+  color: green;
 }
 
 /* navigation principale en utilisant l'imbrication */
@@ -27,7 +28,6 @@ body {
   padding: 5px;
 }
 
-/* Mixin */
 /* Appel de la mixin */
 .btn {
   padding: 8px;
