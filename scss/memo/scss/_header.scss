@@ -1,0 +1,15 @@
+header {
+  display: flex;
+  justify-content: center;
+  background-color: map-get($colors, primary);
+  color: white;
+  a {
+    color: white;
+    
+  }
+  h1{
+    span {
+      @extend %hidden-element;
+    }
+  }
+}
