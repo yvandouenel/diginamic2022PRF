@@ -106,4 +106,41 @@ nav ul li svg {
   color: white;
 }
 
+main > section {
+  width: 90%;
+  margin: 0 auto;
+}
+main > section #columns {
+  display: flex;
+  gap: 10px;
+}
+main > section #columns > section > div {
+  margin: 10px 0;
+  display: flex;
+  gap: 10px;
+}
+main > section #columns > section > div a {
+  display: block;
+  border-radius: 6px;
+  background-color: #377347;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+main > section #columns > section > div a:hover {
+  cursor: pointer;
+  background-color: #6C757D;
+}
+main > section #columns article {
+  background-color: #6C757D;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 15px 0;
+  color: white;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
 /*# sourceMappingURL=index.css.map */

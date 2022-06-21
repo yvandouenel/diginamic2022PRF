@@ -1,0 +1,30 @@
+main>section {
+  width: 90%;
+  margin: 0 auto;
+
+  #columns {
+    display: flex;
+    gap: 10px;
+
+    >section {
+      >div {
+        margin: 10px 0;
+        display: flex;
+        gap: 10px;
+        a {
+          @include button(map-get($colors,"success"), white, map-get($colors,"primary"));
+        
+        }
+      }
+    }
+
+    article {
+      background-color: map-get($colors, primary);
+      padding: 15px;
+      border-radius: 6px;
+      margin: 15px 0;
+      color: white;
+
+    }
+  }
+}
