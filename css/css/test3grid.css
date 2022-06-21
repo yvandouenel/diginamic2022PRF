@@ -1,0 +1,15 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 50px;
+  column-gap: 10px;
+}
+.box3,
+.box4,
+.box5{
+  grid-column-start: 1;/* se placer sur la première line column*/
+}
+.box3{
+  grid-column-start: 3;
+  grid-row-start: 4;/* se placer sur la quatrième line row*/
+}

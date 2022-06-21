@@ -1,0 +1,16 @@
+:root{ 
+  font-size: 100%; 
+} 
+body {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+div {
+  font-size : 2rem; /* 24/16  soit  24 px dans la majorité des cas*/
+}
+#main {
+  height: 75vh;
+  border: 5px solid black;
+}

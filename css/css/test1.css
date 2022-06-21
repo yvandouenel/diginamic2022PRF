@@ -46,5 +46,22 @@ p {
 }
 
 img {
-  width: 80%;
+  max-width: 50%;
 }
+
+ul {
+  list-style: none;
+}
+/* Condition : sil l'écran est <= à 768px */
+@media screen and (max-width: 768px) {
+  img {
+    max-width: 100%;
+  }
+}
+/* Condition : si l l'écran est >= à 768px et <= 980px */
+@media screen and (max-width: 980px) and (min-width:769px) {
+  img {
+    max-width: 75%;
+  }
+}
+

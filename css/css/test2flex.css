@@ -1,0 +1,25 @@
+* {
+  border: 2px solid black;
+}
+#parent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* Alignement sur l'axe secondaire mais au sein 
+  d'une même ligne */
+  align-items: stretch;
+  
+  /* Alignement sur l'axe secondaire dans le cas où on a plusieurs lignes */
+  align-content: space-between;
+  
+  gap: 20px 0;
+}
+.child {
+  flex-basis: 32%;
+  height: 200px;
+  
+}
+/* #div-3 {
+  align-self: flex-end;
+} */
