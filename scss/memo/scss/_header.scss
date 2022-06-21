@@ -1,13 +1,18 @@
 header {
+  padding: 10px 0;
   display: flex;
   justify-content: center;
   background-color: map-get($colors, primary);
   color: white;
   a {
     color: white;
-    
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
   }
   h1{
+    font-size: 2rem;
     span {
       @extend %hidden-element;
     }

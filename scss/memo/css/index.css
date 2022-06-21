@@ -64,12 +64,45 @@ header h1 span {
 }
 
 header {
+  padding: 10px 0;
   display: flex;
   justify-content: center;
   background-color: #6C757D;
   color: white;
 }
 header a {
+  color: white;
+}
+header a svg {
+  width: 2rem;
+  height: 2rem;
+}
+header h1 {
+  font-size: 2rem;
+}
+nav {
+  margin: 20px 0;
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+nav ul li {
+  display: flex;
+  align-items: center;
+  background-color: #6C757D;
+  padding: 0 10px;
+  border-radius: 6px;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+}
+nav ul li svg {
+  width: 15px;
   color: white;
 }
 

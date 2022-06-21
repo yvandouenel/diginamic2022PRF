@@ -1,0 +1,25 @@
+nav {
+  margin: 20px 0;
+ ul {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  li {
+    display: flex;
+    align-items: center;
+    background-color: map-get($colors , primary );
+    padding: 0 10px;
+    border-radius: 6px;
+    a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+      display: block;
+    }
+    svg {
+      width: 15px;
+      color: white;
+    }
+  }
+ }
+}
