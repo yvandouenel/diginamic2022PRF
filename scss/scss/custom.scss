@@ -25,3 +25,21 @@ body {
     }
   }
 }
+
+/* Mixin */
+@mixin button($bgcolor, $color, $hover_color: blue) {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: $bgcolor;
+  color: $color;
+  display: inline-block;
+  margin: 5px;
+  &:hover {
+    cursor: pointer;
+    background-color: $hover_color;
+  }
+}
+/* Appel de la mixin */
+.btn {
+  @include button($color: white,$bgcolor: grey);
+}

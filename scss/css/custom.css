@@ -27,4 +27,19 @@ body {
   padding: 5px;
 }
 
+/* Mixin */
+/* Appel de la mixin */
+.btn {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: grey;
+  color: white;
+  display: inline-block;
+  margin: 5px;
+}
+.btn:hover {
+  cursor: pointer;
+  background-color: blue;
+}
+
 /*# sourceMappingURL=custom.css.map */
