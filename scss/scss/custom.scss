@@ -1,3 +1,27 @@
+/* Définition d'une variable */
+$primary-color: rgb(221, 32, 32);
 body {
+  /* Utilisation de la variable */
+  color: $primary-color;
+}
+/* navigation principale en utilisant l'imbrication */
+#main-nav {
   background-color: grey;
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 0;
+      padding: 0;
+      a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 5px;
+      }
+    }
+  }
 }
