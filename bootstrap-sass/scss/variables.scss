@@ -1,6 +1,17 @@
-/* mes variables  */
-$warning: #CAE3CD;
-$primary: #5F6C5A;
-$secondary: #B0B9A8;
-$danger: #424240;
 
+
+/** Custom variables*/
+$custom-spacers: (
+        6: 10px,
+);
+ 
+/** Replace Bootstrap variables with your variables*/
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  $primary: #5F6C5A,
+  $warning: #CAE3CD,
+  $secondary: #B0B9A8,
+  $danger: #424240,
+ 
+  $spacers: map-merge($spacers, $custom-spacers)
+);
+ 
