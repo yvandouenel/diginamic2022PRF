@@ -17,11 +17,11 @@
       console.log(`Je me déplace de ${a} à ${b} avec mon ${this.name} ${this.color}`);
     }
   }
-  Vehicle.prototype.break = function() {
-  
+  Vehicle.prototype.break = function () {
+
     console.log(`Je freine grâce à ma fonction construteur Vehicle`);
   }
-  Object.prototype.break = function() {
+  Object.prototype.break = function () {
     console.log(`Je freine grâce à la propriété break du prototype d'Object`);
   }
 
@@ -48,5 +48,25 @@
   my_mountain_bike.break();
   console.log(`my_mountain_bike : `, my_mountain_bike);
   console.log(`my_small_bike : `, my_small_bike);
+
+  // Constructeur de cercle
+  function Cercle(rayon, nom) {
+    this.nom = nom;
+    this.rayon = rayon;
+
+  }
+  Cercle.prototype.pi = 3.14;
+  Cercle.prototype.aire = () => {
+    console.log(`this : `, this);
+    console.log(`L'aire du cercle ${this.nom} est de ${this.pi * Math.pow(this.rayon, 2)}`);
+  }
+  const petit_cercle = new Cercle(2, "Petit Cercle");
+  const grand_cercle = new Cercle(4, "Grand Cercle");
+
+  petit_cercle.aire();
+  grand_cercle.aire();
+  console.log(`grand cercle : `, grand_cercle);
+  console.log(`petit cercle : `, petit_cercle);
+  console.log(petit_cercle.aire == grand_cercle.aire);
 
 })();
