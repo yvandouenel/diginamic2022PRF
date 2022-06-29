@@ -3,7 +3,7 @@ import api_id from "./assets/settings.js";
 console.log(`api_id`, api_id);
 (function () {
 
-
+  let current_town = null;
 
   // Gestion des événements
   const select = document.querySelector("select");
@@ -25,9 +25,17 @@ console.log(`api_id`, api_id);
         })
         .then(data => {
           console.log(`données météo : `, data);
+          const meteo = {
+            temp: data.main.temp,
+            description: data.weather[0].description,
+            wind: data.wind.speed
+          }
 
           // Création d'une instance de Town
-          new Town(city_name, data);
+          if(current_town) {
+            current_town.remove();
+          }
+          current_town = new Town(city_name, meteo);
         })
         .catch(error => {
           console.error(error);
