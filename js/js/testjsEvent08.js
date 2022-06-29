@@ -2,13 +2,21 @@
 (function () {
   const h1 = document.querySelector("h1");
   const h2 = document.querySelector("h2");
-  console.log(`h1 : `, h1);
-  
-  let test = function() {
+  const a = document.querySelector("a");
+  let i = 12;
+  a.onclick = (function (e) {
+    handleClick = handleClick.bind(i);
+    handleClick(e, "toto");
+  });
+
+
+  function handleClick(e, name) {
     console.log(`this : `, this);
-    console.log(`Clic sur h1`);
+    console.log(`name : `, name);
+    console.log(`e.target : `, e.target);
+
+    e.preventDefault();
   };
-  const test2 = test.bind(h2);
-  h1.onclick = test2;
+  h1.onclick = handleClick;
 
 })();
