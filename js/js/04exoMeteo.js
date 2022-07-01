@@ -13,7 +13,11 @@ console.log(`api_id`, api_id);
       getWeather(city_name);
     }
   }
-
+/**
+ * Va chercher dans un premier temps les coordonnées (lon, lat) d'une ville puis 
+ * va chercher la météo de la ville en question
+ * @param {string} city_name 
+ */
   async function getWeather(city_name) {
     try {
       const response_geocoding = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city_name},,fra&limit=1&appid=${api_id}`);
