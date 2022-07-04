@@ -33,26 +33,26 @@ class App extends Component {
     this.country_universities = await UniversityData.getUniversities(country);
     console.log(`this`, this);
     // 
-    this.setState({ 
+    this.setState({
       universities: this.country_universities,
       search_text: ""
-     });
+    });
   }
   handleChangeUnivesityName = (event) => {
     console.log(`Dans handleChangeUnivesityName`);
 
     const search_txt = event.target.value;
 
-    this.setState({search_text: search_txt});
+    this.setState({ search_text: search_txt });
 
-    if (search_txt.length > 1) {
-      // Attention, ici on filtre non pas le tableau du state mais
-      // le tableau country_universities
-      const filtered_universities = this.country_universities.filter(university => {
-        return university.name.toLowerCase().includes(search_txt.toLowerCase());
-      });
-      this.setState({ universities: filtered_universities });
-    }
+
+    // Attention, ici on filtre non pas le tableau du state mais
+    // le tableau country_universities
+    const filtered_universities = this.country_universities.filter(university => {
+      return university.name.toLowerCase().includes(search_txt.toLowerCase());
+    });
+    this.setState({ universities: filtered_universities });
+
   }
 
   // Appelé au "montage" du composant après le constructeur
@@ -68,10 +68,14 @@ class App extends Component {
           search_text={this.state.search_text}
         />
 
-        <h1>Universités</h1>
+        <h1>Universités ({this.state.universities.length} résultats)</h1>
         <section className="row ">
-          {this.state.universities.map((university, index) =>
-            <University key={index} univ={university} />
+          {this.state.universities.length > 50 ? (
+            "Trop de résultats "
+          ) : (
+            this.state.universities.map((university, index) =>
+              <University key={index} univ={university} />
+            )
           )}
         </section>
       </div>
