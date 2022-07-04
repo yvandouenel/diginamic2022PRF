@@ -8,18 +8,39 @@ class App extends Component {
     super(props);
     this.state = {
       tasks: [
-        { label: 'Aller boire une bière' },
-        { label: 'Faire le ménage' },
+        { label: 'Aller boire une bière', is_completed: false },
+        { label: 'Faire le ménage', is_completed: false },
       ]
     };
   }
   handleClickDeleteTask = (index) => {
     console.log(`dans handleClickDeleteTask`, index);
-    // Comment supprimer ? filter
-    // Comment savoir quoi supprimer ?
 
     // Modification du state
-    this.setState({tasks: this.state.tasks.filter((task,i) => index != i )});
+    this.setState({ tasks: this.state.tasks.filter((task, i) => index != i) });
+  }
+  handleClickValidateTask = (index) => {
+    console.log(`dans handleClickDeleteTask`, index);
+    // Copie du state
+    const copy_state = { ... this.state };
+    // Modification de la copie du state
+    copy_state.tasks[index].is_completed = !copy_state.tasks[index].is_completed;
+
+
+
+    if (copy_state.tasks[index].is_completed) {
+      // Suppression de l'élément avec splice
+      const deleted_tasks = copy_state.tasks.splice(index, 1);
+      // Ajout de l'élément supprimé à la fin du tableau
+      copy_state.tasks.push(deleted_tasks[0]);
+    } else {
+      // Suppression de l'élément avec splice
+      const deleted_tasks = copy_state.tasks.splice(index, 1);
+      copy_state.tasks.unshift(deleted_tasks[0]);
+    }
+
+    // Modification du state
+    this.setState(copy_state);
   }
 
   handleSubmitAddTask = (event) => {
@@ -29,7 +50,7 @@ class App extends Component {
     console.log(`label_new_task`, label_new_task);
 
     // Mise à jour du state
-    this.setState({ tasks: [...this.state.tasks, { label: label_new_task }] });
+    this.setState({ tasks: [{ label: label_new_task }, ...this.state.tasks] });
   }
   render() {
     return (
@@ -41,12 +62,13 @@ class App extends Component {
         </form>
 
 
-        {this.state.tasks.map((task, index) => 
-        <Task
-          key={index}
-          label={task.label}
-          handleClickDeleteTask={() => {this.handleClickDeleteTask(index)}}
-        />)}
+        {this.state.tasks.map((task, index) =>
+          <Task
+            key={index}
+            task={task}
+            handleClickDeleteTask={() => { this.handleClickDeleteTask(index) }}
+            handleClickValidateTask={() => { this.handleClickValidateTask(index) }}
+          />)}
       </div>
     );
   }
