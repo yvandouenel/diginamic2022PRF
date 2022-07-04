@@ -9,7 +9,8 @@ class App extends Component {
     super(props);
     this.country_universities = [];
     this.state = {
-      universities: []
+      universities: [],
+      search_text: ""
     };
   }
   // Appelé au "montage" du composant après le render
@@ -25,23 +26,32 @@ class App extends Component {
   }
 
   handleChangeCountry = async (event) => {
-    
+
     console.log(`dans handleSubmitCountry`);
     // Récupération de la value
     const country = event.target.value;
     this.country_universities = await UniversityData.getUniversities(country);
     console.log(`this`, this);
-    this.setState({ universities: this.country_universities });
+    // 
+    this.setState({ 
+      universities: this.country_universities,
+      search_text: ""
+     });
   }
   handleChangeUnivesityName = (event) => {
     console.log(`Dans handleChangeUnivesityName`);
-    
+
     const search_txt = event.target.value;
-    if(search_txt.length > 2) {
-      const filtered_universities = this.state.universities.filter(university => {
+
+    this.setState({search_text: search_txt});
+
+    if (search_txt.length > 1) {
+      // Attention, ici on filtre non pas le tableau du state mais
+      // le tableau country_universities
+      const filtered_universities = this.country_universities.filter(university => {
         return university.name.toLowerCase().includes(search_txt.toLowerCase());
       });
-      this.setState({universities:filtered_universities});
+      this.setState({ universities: filtered_universities });
     }
   }
 
@@ -55,6 +65,7 @@ class App extends Component {
           onChangeCountry={this.handleChangeCountry}
           onChangeUnivesityName={this.handleChangeUnivesityName}
           count={this.state.universities.length}
+          search_text={this.state.search_text}
         />
 
         <h1>Universités</h1>

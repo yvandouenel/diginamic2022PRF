@@ -20,7 +20,7 @@ const FormUniversities = (props) => {
           <label htmlFor='name'>
             Filtre :
           </label>
-          <input type="text" onChange={props.onChangeUnivesityName} />
+          <input type="text" value={props.search_text} onChange={props.onChangeUnivesityName} />
         </>
       )}
     </form>
