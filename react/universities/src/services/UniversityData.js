@@ -7,7 +7,7 @@ export default class UniversityData {
       return response.json();
     })
     .then(data => {
-      console.log(`data : `, data);
+      console.log(`data dans getUniversities: `, data);
       return data;
     })
     .catch(error => {

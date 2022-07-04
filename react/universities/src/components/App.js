@@ -7,6 +7,7 @@ import FormUniversities from './FormUniversities';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.country_universities = [];
     this.state = {
       universities: []
     };
@@ -23,14 +24,14 @@ class App extends Component {
     document.title = "Composant APP mis à jour";
   }
 
-  handleSubmitCountry = async (event) => {
-    event.preventDefault();
+  handleChangeCountry = async (event) => {
+    
     console.log(`dans handleSubmitCountry`);
     // Récupération de la value
-    const country = event.target.querySelector("select").value;
-    const universities = await UniversityData.getUniversities(country);
+    const country = event.target.value;
+    this.country_universities = await UniversityData.getUniversities(country);
     console.log(`this`, this);
-    this.setState({ universities: universities });
+    this.setState({ universities: this.country_universities });
   }
   handleChangeUnivesityName = (event) => {
     console.log(`Dans handleChangeUnivesityName`);
@@ -51,8 +52,9 @@ class App extends Component {
     return (
       <div className='container'>
         <FormUniversities
-          onSubmitCountry={this.handleSubmitCountry}
+          onChangeCountry={this.handleChangeCountry}
           onChangeUnivesityName={this.handleChangeUnivesityName}
+          count={this.state.universities.length}
         />
 
         <h1>Universités</h1>

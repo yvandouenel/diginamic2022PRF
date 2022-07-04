@@ -1,22 +1,28 @@
 const FormUniversities = (props) => {
+  function getInput() {
+    if(props.count) {}
+  }
+
   return (
-    <form onSubmit={props.onSubmitCountry}>
+    <form onSubmit={(e) => { e.preventDefault() }}>
       <label htmlFor='coutry'>
         Pays :
       </label>
-      <select id="country">
+      <select id="country" onChange={props.onChangeCountry} >
         <option value="">Choisissez un pays</option>
         <option value="France">France</option>
         <option value="Luxembourg">Luxembourg</option>
         <option value="Spain">Espagne</option>
+        <option value="Andorra">Andorre</option>
       </select>
-      <label htmlFor='name'>
-        Filtre :
-      </label>
-      <input type="text"  onChange={props.onChangeUnivesityName}/>
-
-
-      <input type="submit" value="Envoyer" />
+      {props.count > 0 && (
+        <>
+          <label htmlFor='name'>
+            Filtre :
+          </label>
+          <input type="text" onChange={props.onChangeUnivesityName} />
+        </>
+      )}
     </form>
   );
 }
