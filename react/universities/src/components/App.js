@@ -18,18 +18,43 @@ class App extends Component {
 
     const universities = await UniversityData.getUniversities("France");
     console.log(`universities`, universities);
-    this.setState({universities : universities});
+    this.setState({ universities: universities });
   }
   // Appelé à la modification du composant après render
   componentDidUpdate() {
     console.log(`Dans componentDidUpdate`);
     document.title = "Composant APP mis à jour";
   }
+  
+   handleSubmitCountry = async (event) => {
+    event.preventDefault();
+    console.log(`dans handleSubmitCountry`);
+    // Récupération de la value
+    const country = event.target.querySelector("select").value;
+    const universities = await UniversityData.getUniversities(country);
+    console.log(`this`, this);
+    this.setState({ universities: universities });
+  }
+
   // Appelé au "montage" du composant après le constructeur
   // Appelé également dans la phase d'update (après modification du state)
   render() {
+    
     return (
       <div className='container'>
+        <form onSubmit={ this.handleSubmitCountry}>
+          <label htmlFor='coutry'>
+            Pays :
+          </label>
+          <select id="country">
+            <option value="">Choisissez un pays</option>
+            <option value="France">France</option>
+            <option value="Luxembourg">Luxembourg</option>
+            <option value="Spain">Espagne</option>
+          </select>
+          <input type="submit" value="Envoyer" />
+        </form>
+
         <h1>Universités</h1>
         <section className="row ">
           {this.state.universities.map((university, index) =>
