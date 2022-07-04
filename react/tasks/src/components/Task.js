@@ -5,7 +5,10 @@ const Task = (props) => {
       <h2>{props.label}</h2>
       <div>
         <Button className="btn btn-warning ms-3">Valider</Button>
-        <Button className="btn btn-danger ms-3">Supprimer</Button>
+        <Button
+          className="btn btn-danger ms-3"
+          onClick={props.handleClickDeleteTask}
+        >Supprimer</Button>
       </div>
     </section>
   );
