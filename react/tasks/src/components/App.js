@@ -16,8 +16,10 @@ class App extends Component {
   handleClickDeleteTask = (index) => {
     console.log(`dans handleClickDeleteTask`, index);
 
-    // Modification du state
-    this.setState({ tasks: this.state.tasks.filter((task, i) => index != i) });
+    if (window.confirm("Voulez-vous vraiment supprimer cette tâche ?")) {
+      // Modification du state
+      this.setState({ tasks: this.state.tasks.filter((task, i) => index != i) });
+    }
   }
   handleClickValidateTask = (index) => {
     console.log(`dans handleClickDeleteTask`, index);
@@ -25,7 +27,6 @@ class App extends Component {
     const copy_state = { ... this.state };
     // Modification de la copie du state
     copy_state.tasks[index].is_completed = !copy_state.tasks[index].is_completed;
-
 
 
     if (copy_state.tasks[index].is_completed) {
