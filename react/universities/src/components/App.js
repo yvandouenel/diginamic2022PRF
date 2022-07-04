@@ -16,7 +16,7 @@ class App extends Component {
     console.log(`Dans componentDidMount`);
     document.title = "Composant APP monté";
 
-    const universities = await UniversityData.getUniversities("Luxembourg");
+    const universities = await UniversityData.getUniversities("France");
     console.log(`universities`, universities);
     this.setState({universities : universities});
   }
@@ -29,14 +29,14 @@ class App extends Component {
   // Appelé également dans la phase d'update (après modification du state)
   render() {
     return (
-      <>
+      <div className='container'>
         <h1>Universités</h1>
-        <section>
+        <section className="row ">
           {this.state.universities.map((university, index) =>
             <University key={index} univ={university} />
           )}
         </section>
-      </>
+      </div>
     );
   }
 }

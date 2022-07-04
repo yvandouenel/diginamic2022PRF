@@ -1,8 +1,10 @@
 const University = (props) => {
   return (
-    <section>
-      <h2>{props.univ.name}</h2>
-      <p>{props.univ.web_pages[0]}</p>
+    <section className="col-md-4">
+      <div className="border border-1 p-2 mb-3">
+        <h2>{props.univ.name}</h2>
+        <p>{props.univ.web_pages[0]}</p>
+      </div>
     </section>
   );
 }
