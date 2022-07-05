@@ -1,15 +1,14 @@
 import '../css/App.css';
 import { Link } from "react-router-dom";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Dashboard from './dashboard/Dashboard';
+import About from './About';
+
 function App() {
   return (
     <div className="App">
       <h1>Memo</h1>
-      <main>
+      <main className='container'>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="about" element={<About />} />
