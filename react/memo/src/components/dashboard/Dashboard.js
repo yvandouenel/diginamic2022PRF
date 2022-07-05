@@ -8,7 +8,7 @@ const Dashboard = () => {
         <Term name="js" />
         <Term name="react" />
       </nav>
-      <TableMemo />
+      <TableMemo term="js" />
     </>
   );
 }

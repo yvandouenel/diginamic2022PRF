@@ -2,7 +2,7 @@ import '../css/App.css';
 import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from './dashboard/Dashboard';
-import About from './About';
+import About from './about/About';
 
 function App() {
   return (
