@@ -1,4 +1,4 @@
-class MemopusData {
+export default class MemopusData {
   static url_server = 'https:www.coopernet.fr';
   static token = "";
   static user = null;
@@ -13,6 +13,7 @@ class MemopusData {
       })
       .then((token) => {
         this.token = token;
+        
       });
   }
   static getUser = (login, pwd) => {
@@ -35,7 +36,6 @@ class MemopusData {
       .then(data => {
         if (data.current_user === undefined) {
           console.log("Erreur de login");
-          callbackFailed("Erreur de login ou de mot de passe");
           throw new Error("Erreur de data : ", data);
         } else {
           //console.log("user", data.current_user);
