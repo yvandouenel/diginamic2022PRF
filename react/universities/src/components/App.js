@@ -10,7 +10,8 @@ class App extends Component {
     this.country_universities = [];
     this.state = {
       universities: [],
-      search_text: ""
+      search_text: "",
+      error_msg: ""
     };
   }
   // Appelé au "montage" du composant après le render
@@ -19,24 +20,31 @@ class App extends Component {
     console.log(`Dans componentDidMount`);
     document.title = "Composant APP monté";
   }
-  // Appelé à la modification du composant après render
+  // Appelé à la modificatiofetchn du composant après render
   componentDidUpdate() {
     console.log(`Dans componentDidUpdate`);
     document.title = "Composant APP mis à jour";
   }
 
   handleChangeCountry = async (event) => {
-
-    console.log(`dans handleSubmitCountry`);
-    // Récupération de la value
-    const country = event.target.value;
-    this.country_universities = await UniversityData.getUniversities(country);
-    console.log(`this`, this);
-    // 
-    this.setState({
-      universities: this.country_universities,
-      search_text: ""
-    });
+    try {
+      console.log(`dans handleSubmitCountry`);
+      // Récupération de la value
+      const country = event.target.value;
+      this.country_universities = await UniversityData.getUniversities(country);
+      console.log(`this`, this);
+      // 
+      this.setState({
+        universities: this.country_universities,
+        search_text: ""
+      });
+      
+    } catch (error) {
+      
+      console.error("Erreur attrapé dans handleChangeCountry : ", error);
+      this.setState({error_msg: "Erreur de communication avec le serveur, contactez JP. " 
+      + error  })
+    }
   }
   handleChangeUnivesityName = (event) => {
     console.log(`Dans handleChangeUnivesityName`);
@@ -47,7 +55,7 @@ class App extends Component {
 
 
     // Attention, ici on filtre non pas le tableau du state mais
-    // le tableau country_universities
+    // le tableau country_universities qui est une propriété à part
     const filtered_universities = this.country_universities.filter(university => {
       return university.name.toLowerCase().includes(search_txt.toLowerCase());
     });
@@ -61,6 +69,9 @@ class App extends Component {
 
     return (
       <div className='container'>
+      {this.state.error_msg != "" && (
+        <h2 className="text-danger">{this.state.error_msg}</h2>
+      )}
         <FormUniversities
           onChangeCountry={this.handleChangeCountry}
           onChangeUnivesityName={this.handleChangeUnivesityName}
