@@ -3,7 +3,7 @@ const TableMemo = (props) => {
   return (
     <section>
       <h2>{props.term}</h2>
-      <section>
+      <section className="row">
         <Column title="A apprendre" />
         <Column title="Je sais un peu" />
         <Column title="Je sais bien" />
