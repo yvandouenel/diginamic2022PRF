@@ -3,6 +3,7 @@ import Term from "./Term";
 const Dashboard = () => {
   return (
     <>
+      
       <nav>
         <Term name="css" />
         <Term name="js" />

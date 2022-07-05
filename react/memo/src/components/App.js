@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from './dashboard/Dashboard';
 import About from './about/About';
+import Header from './common/Header';
 
 function App() {
   return (
     <div className="App">
-      <h1>Memo</h1>
-      <main className='container'>
+      <Header />
+      <main className='container mt-2'>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="about" element={<About />} />

@@ -1,6 +1,6 @@
 const Card = (props) => {
   return (
-    <article>
+    <article className="text-white mb-4 rounded bg-secondary p-3">
       <h4>{props.name}</h4>
     </article>
   );
