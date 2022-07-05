@@ -1,5 +1,5 @@
 export default class MemopusData {
-  static url_server = 'https:www.coopernet.fr';
+  static url_server = 'https://coopernet.fr';
   static token = "";
   static user = null;
 

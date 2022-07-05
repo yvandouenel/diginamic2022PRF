@@ -32,7 +32,7 @@ function App() {
           <Route path="about" element={<About />} />
         </Routes>
       </main>
-      <footer>
+      <footer className='mt-4'>
         <Link to="/about">A propos</Link> |{" "}
         <Link to="/">Dashboard</Link>
       </footer>
