@@ -1,42 +1,45 @@
 
 import './../css/App.css';
-import { Component } from 'react';
 import IncrementButton from './buttons/IncrementButton';
 import CounterButton from './buttons/CounterButton';
 import ResetButton from './buttons/ResetButton';
+import { useState, useEffect } from 'react';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      counter: 0
-    };
-    
-  }
-  handleClickIncrement = () => {
+const App = () => {
+  // hook d'état
+  const [counter, setCounter] = useState(0);
+
+  // hook d'effet pour remplacer les cycles de vie d'un composant Class
+
+  // Equivalent de componentDidUpdate
+  useEffect(() => {
+    document.title = `Valeur du compteur : ${counter}`;
+  });
+
+  // Equivalent de componentDidMount
+  useEffect(() => {
+    document.title = "Hello World!"
+  }, []);
+
+
+  const handleClickIncrement = () => {
     console.log(`dans handleClickIncrement`);
-    console.log(`this`, this);
     // Appel de setState
-    this.setState(function(state,props) {
-      return {counter: state.counter + 1}
-    })
+    setCounter(prevCount => prevCount + 1)
   }
-  handleClickReset = () => {
+  const handleClickReset = () => {
     console.log(`dans handleClickReset`);
-    
-    // Appel de setState
-    this.setState({counter: 0})
+
+    setCounter(0);
   }
-  render() {
-    return (
-      <>
-        <CounterButton  counter={this.state.counter} />
-        <CounterButton  counter={this.state.counter} />
-        <IncrementButton handleClickIncrement={this.handleClickIncrement} />
-        <ResetButton handleClickReset={this.handleClickReset}/>
-      </>
-    );
-  }
+  return (
+    <>
+      <CounterButton counter={counter} />
+      <IncrementButton handleClickIncrement={handleClickIncrement} />
+      <ResetButton handleClickReset={handleClickReset} />
+    </>
+  );
 }
 
 export default App;
+
