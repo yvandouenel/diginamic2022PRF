@@ -2,15 +2,33 @@ import TableMemo from "./TableMemo";
 import Term from "./Term";
 import FormLogin from './FormLogin';
 import MemopusData from "../../services/MemopusData";
+import { useState } from "react";
 
 const Dashboard = () => {
-  const handleSubmitLogin = (e) => {
-    e.preventDefault();
-    console.log(`dans handleSubmit`);
+  // utilisation du hook d'état
+  const [is_logged, setIsLogged] = useState(false);
+
+  const handleSubmitLogin = async (e) => {
+    try {
+      e.preventDefault();
+      console.log(`dans handleSubmit`);
+      const login = e.target.login.value;
+      const pwd = e.target.pwd.value;
+
+      // Appel de getUser
+      await MemopusData.getUser(login, pwd);
+      setIsLogged(true);
+
+    } catch (error) {
+      console.error("Erreur attrapée dans handleSubmitLogin", error);
+      setIsLogged(false);
+
+    }
+
   }
   return (
     <>
-      {MemopusData.user == null ? (
+      { !is_logged ? (
         <FormLogin onSubmit={handleSubmitLogin} />
       ) : (
         <>

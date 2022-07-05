@@ -17,10 +17,10 @@ export default class MemopusData {
       });
   }
   static getUser = (login, pwd) => {
-    console.log("dans getUser");
+    console.log("dans getUser", this.token);
     //console.log(login, pwd, this.token);
     // utilisation de fetch
-    fetch(this.url_server + "user/login?_format=json", {
+    return fetch(this.url_server + "/user/login?_format=json", {
       credentials: "same-origin",
       method: "POST",
       headers: {
@@ -38,13 +38,13 @@ export default class MemopusData {
           console.log("Erreur de login");
           throw new Error("Erreur de data : ", data);
         } else {
-          //console.log("user", data.current_user);
+          console.log("user", data.current_user);
+          this.user = {};
           this.user.uid = data.current_user.uid;
           this.user.uname = data.current_user.name;
           this.user.upwd = pwd;
         }
-      })
-      .catch(error => { console.error("Erreur attrapée dans tokenSuccess", error) });
+      });
     
   };
 }
