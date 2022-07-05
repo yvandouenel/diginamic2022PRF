@@ -25,7 +25,7 @@ export default class MemopusData {
    * Va chercher les données de l'utilisateur en fonction d'un login et mdp
    * @param {String} login 
    * @param {String} pwd 
-   * @returns void
+   * @returns promise
    */
   static getUser = (login, pwd) => {
     console.log("dans getUser", this.token);
@@ -58,7 +58,7 @@ export default class MemopusData {
       });
     
   };
-  
+
   /**
    * Va chercher les termes qui correspondent à l'utilisateur connecté
    * @returns promise
@@ -86,6 +86,37 @@ export default class MemopusData {
       .catch((error) => {
         console.log("error catché dans getTerms", error);
         
+      });
+  };
+  static getCards = (term_id) => {
+    return fetch(
+      this.url_server +
+        "/memo/list_cartes_term/" +
+        this.user.uid +
+        "/" +
+        term_id +
+        "&_format=json&time=" +
+        Math.floor(Math.random() * 10000),
+      {
+        credentials: "same-origin",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/hal+json",
+          "X-CSRF-Token": this.token,
+          Authorization: "Basic " + btoa(this.user.uname + ":" + this.user.upwd), // btoa = encodage en base 64
+        },
+      }
+    )
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        else throw new Error("Problème de réponse du serveur :  " + response.status);
+      })
+      .then((data) => {
+        console.log("Data dans getCards : ", data);
+        return data;
+      })
+      .catch((error) => {
+        console.log("Erreur attrapée dans getCards", error);
       });
   };
 }

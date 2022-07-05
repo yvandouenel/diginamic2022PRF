@@ -28,14 +28,27 @@ const Dashboard = () => {
     }
 
   }
+  const handleClickTerm = async(term_id) => {
+    console.log(`dans handleClickTerm`, term_id);
+    try {
+      const test = await MemopusData.getCards(term_id);
+      console.log(`test `, test);
+    } catch (error) {
+      console.error("Erreur attrapée dans handleSubmitLogin", error);
+    }
+  }
   return (
     <>
-      { !is_logged ? (
+      {!is_logged ? (
         <FormLogin onSubmit={handleSubmitLogin} />
       ) : (
         <>
           <nav>
-            {terms.map(term => <Term key={term.id} term={term} />)}
+            {terms.map(term => <Term key={term.id}
+              onClickTerm={handleClickTerm}
+              term={term}
+
+            />)}
           </nav>
           <TableMemo term="js" />
         </>
