@@ -3,6 +3,10 @@ export default class MemopusData {
   static token = "";
   static user = null;
 
+  /**
+   * Va chercher le token qui permet de communiquer avec le serveur
+   * @returns promise
+   */
   static getToken = () => {
     console.log(`Dans getToken`);
     return fetch(`${this.url_server}/session/token/`)
@@ -16,6 +20,7 @@ export default class MemopusData {
         
       });
   }
+
   /**
    * Va chercher les données de l'utilisateur en fonction d'un login et mdp
    * @param {String} login 
@@ -53,6 +58,11 @@ export default class MemopusData {
       });
     
   };
+  
+  /**
+   * Va chercher les termes qui correspondent à l'utilisateur connecté
+   * @returns promise
+   */
   static getTerms = () => {
     console.log("Dans getTerms ");
     return fetch(this.url_server + "/memo/themes/" + this.user.uid, {

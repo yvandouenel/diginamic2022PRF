@@ -1,6 +1,6 @@
 const Term = (props) => {
   return (
-    <button className="btn btn-secondary m-2">{props.name}</button>
+    <button className="btn btn-secondary m-2">{props.term.name}</button>
   );
 }
 

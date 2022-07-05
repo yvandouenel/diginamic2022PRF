@@ -7,6 +7,7 @@ import { useState } from "react";
 const Dashboard = () => {
   // utilisation du hook d'état
   const [is_logged, setIsLogged] = useState(false);
+  const [terms, setTerms] = useState([]);
 
   const handleSubmitLogin = async (e) => {
     try {
@@ -18,8 +19,9 @@ const Dashboard = () => {
       // Appel de getUser
       await MemopusData.getUser(login, pwd);
       setIsLogged(true);
-      const terms = await MemopusData.getTerms();
-      console.log(`terms`, terms);
+      // Appel de getTerms
+      const terms_response = await MemopusData.getTerms();
+      setTerms(terms_response);
     } catch (error) {
       console.error("Erreur attrapée dans handleSubmitLogin", error);
       setIsLogged(false);
@@ -33,9 +35,7 @@ const Dashboard = () => {
       ) : (
         <>
           <nav>
-            <Term name="css" />
-            <Term name="js" />
-            <Term name="react" />
+            {terms.map(term => <Term key={term.id} term={term} />)}
           </nav>
           <TableMemo term="js" />
         </>
