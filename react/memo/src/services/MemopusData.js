@@ -16,6 +16,12 @@ export default class MemopusData {
         
       });
   }
+  /**
+   * Va chercher les données de l'utilisateur en fonction d'un login et mdp
+   * @param {String} login 
+   * @param {String} pwd 
+   * @returns void
+   */
   static getUser = (login, pwd) => {
     console.log("dans getUser", this.token);
     //console.log(login, pwd, this.token);
@@ -47,9 +53,9 @@ export default class MemopusData {
       });
     
   };
-  getTerms = () => {
+  static getTerms = () => {
     console.log("Dans getTerms ");
-    fetch(this.url + "/memo/themes/" + this.user.uid, {
+    return fetch(this.url_server + "/memo/themes/" + this.user.uid, {
       credentials: "same-origin",
       method: "GET",
       headers: {
@@ -65,11 +71,11 @@ export default class MemopusData {
       })
       .then((data) => {
         console.log("data reçues dans getTerms :", data);
-        success(data);
+        return data;
       })
       .catch((error) => {
         console.log("error catché dans getTerms", error);
-        failed(error);
+        
       });
   };
 }

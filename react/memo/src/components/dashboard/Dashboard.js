@@ -18,11 +18,11 @@ const Dashboard = () => {
       // Appel de getUser
       await MemopusData.getUser(login, pwd);
       setIsLogged(true);
-
+      const terms = await MemopusData.getTerms();
+      console.log(`terms`, terms);
     } catch (error) {
       console.error("Erreur attrapée dans handleSubmitLogin", error);
       setIsLogged(false);
-
     }
 
   }
