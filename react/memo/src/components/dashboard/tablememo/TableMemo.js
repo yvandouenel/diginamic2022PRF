@@ -1,4 +1,4 @@
-import Column from "./Column";
+import Column from "./columns/Column";
 const TableMemo = (props) => {
   return (
     <section>

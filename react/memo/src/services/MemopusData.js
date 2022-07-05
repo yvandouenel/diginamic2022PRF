@@ -88,6 +88,11 @@ export default class MemopusData {
         
       });
   };
+  /**
+   * Récupère les données structurées sous forme de json imbriqué
+   * @param {Number} term_id 
+   * @returns 
+   */
   static getCards = (term_id) => {
     return fetch(
       this.url_server +

@@ -1,6 +1,6 @@
-import TableMemo from "./TableMemo";
-import Term from "./Term";
-import FormLogin from './FormLogin';
+import TableMemo from "./tablememo/TableMemo";
+import Term from "./terms/Term";
+import FormLogin from './formlogin/FormLogin';
 import MemopusData from "../../services/MemopusData";
 import { useState } from "react";
 
@@ -8,6 +8,8 @@ const Dashboard = () => {
   // utilisation du hook d'état
   const [is_logged, setIsLogged] = useState(false);
   const [terms, setTerms] = useState([]);
+  const [columns, setColumns] = useState([]);
+  const [current_term, setCurrentTerm] = useState("");
 
   const handleSubmitLogin = async (e) => {
     try {
@@ -28,11 +30,13 @@ const Dashboard = () => {
     }
 
   }
-  const handleClickTerm = async(term_id) => {
-    console.log(`dans handleClickTerm`, term_id);
+  const handleClickTerm = async(term) => {
+    console.log(`dans handleClickTerm`, term.id);
     try {
-      const test = await MemopusData.getCards(term_id);
-      console.log(`test `, test);
+      const columns_response = await MemopusData.getCards(term.id);
+      console.log(`columns_response `, columns_response);
+      setCurrentTerm(term.name);
+      setColumns(columns_response);
     } catch (error) {
       console.error("Erreur attrapée dans handleSubmitLogin", error);
     }
@@ -50,7 +54,7 @@ const Dashboard = () => {
 
             />)}
           </nav>
-          <TableMemo term="js" />
+          <TableMemo term={current_term} columns={columns} />
         </>
       )}
 

@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "./cards/Card";
 const Column = (props) => {
   return (
     <section  className="col">
