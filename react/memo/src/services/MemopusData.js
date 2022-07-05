@@ -47,4 +47,29 @@ export default class MemopusData {
       });
     
   };
+  getTerms = () => {
+    console.log("Dans getTerms ");
+    fetch(this.url + "/memo/themes/" + this.user.uid, {
+      credentials: "same-origin",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/hal+json",
+        "X-CSRF-Token": this.token,
+        Authorization: "Basic " + btoa(this.user.uname + ":" + this.user.pwd), // btoa = encodage en base 64
+      },
+    })
+
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        else throw new Error("Problème de réponse ", response);
+      })
+      .then((data) => {
+        console.log("data reçues dans getTerms :", data);
+        success(data);
+      })
+      .catch((error) => {
+        console.log("error catché dans getTerms", error);
+        failed(error);
+      });
+  };
 }
