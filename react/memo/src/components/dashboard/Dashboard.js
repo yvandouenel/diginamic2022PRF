@@ -47,7 +47,7 @@ const Dashboard = () => {
         <FormLogin onSubmit={handleSubmitLogin} />
       ) : (
         <>
-          <nav>
+          <nav className="d-flex justify-content-center">
             {terms.map(term => <Term key={term.id}
               onClickTerm={handleClickTerm}
               term={term}
