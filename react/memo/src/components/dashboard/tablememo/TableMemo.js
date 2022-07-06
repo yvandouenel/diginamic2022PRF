@@ -4,10 +4,7 @@ const TableMemo = (props) => {
     <section>
       <h2>{props.term}</h2>
       <section className="row">
-        <Column title="A apprendre" />
-        <Column title="Je sais un peu" />
-        <Column title="Je sais bien" />
-        <Column title="Je sais parfaitement" />
+        {props.columns.map(column => <Column key={column.id} column={column} />)}
       </section>
     </section>
   );

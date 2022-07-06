@@ -1,10 +1,11 @@
 import Card from "./cards/Card";
 const Column = (props) => {
+
+  
   return (
     <section  className="col">
-      <h3>{props.title}</h3>
-      <Card name="Question 1" />
-      <Card name="Question 2" />
+      <h3>{props.column.name}</h3>
+      {props.column.cartes.map(card => <Card key={card.id} card={card} />)}
     </section>
   );
 }
