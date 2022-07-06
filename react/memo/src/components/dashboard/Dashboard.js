@@ -2,7 +2,10 @@ import TableMemo from "./tablememo/TableMemo";
 import Term from "./terms/Term";
 import FormLogin from './formlogin/FormLogin';
 import MemopusData from "../../services/MemopusData";
-import { useState } from "react";
+import { useState, createContext } from "react";
+
+
+export const DeleteCardContext = createContext();
 
 const Dashboard = () => {
   // utilisation du hook d'état
@@ -10,6 +13,16 @@ const Dashboard = () => {
   const [terms, setTerms] = useState([]);
   const [columns, setColumns] = useState([]);
   const [current_term, setCurrentTerm] = useState("");
+
+
+  const handleClickDeleteCard = (index_column, index_card) => {
+    console.log(`Dans handleClickDeleteCard`, index_column, index_card);
+    const columns_copy = [...columns];
+    console.log(`columns_copy`, columns_copy);
+    columns_copy[index_column].cartes.splice(index_card, 1);
+
+    setColumns(columns_copy);
+  }
 
   const handleSubmitLogin = async (e) => {
     try {
@@ -30,7 +43,7 @@ const Dashboard = () => {
     }
 
   }
-  const handleClickTerm = async(term) => {
+  const handleClickTerm = async (term) => {
     console.log(`dans handleClickTerm`, term.id);
     try {
       const columns_response = await MemopusData.getCards(term.id);
@@ -54,7 +67,9 @@ const Dashboard = () => {
 
             />)}
           </nav>
-          <TableMemo term={current_term} columns={columns} />
+          <DeleteCardContext.Provider value={handleClickDeleteCard}>
+            <TableMemo term={current_term} columns={columns} />
+          </DeleteCardContext.Provider>
         </>
       )}
 

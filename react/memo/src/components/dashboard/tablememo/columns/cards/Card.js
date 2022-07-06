@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { propTypes } from "react-bootstrap/esm/Image";
+import { DeleteCardContext } from "../../../Dashboard";
 const Card = (props) => {
-
+  const onClicDeleteCard = useContext(DeleteCardContext);
   // Etat local à la carte
   const [is_answer_shown, setAnswerShown] = useState(false);
   return (
@@ -12,6 +14,10 @@ const Card = (props) => {
       {is_answer_shown && (
         <p>{props.card.reponse}</p>
       )}
+      <button
+        onClick={() => { onClicDeleteCard(props.index_column, props.index_card) }}
+        className="btn btn-danger"
+      >Suppresion</button>
     </article>
   );
 }

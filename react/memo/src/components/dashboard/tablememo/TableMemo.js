@@ -1,5 +1,5 @@
 import Column from "./columns/Column";
-import {useState} from "react";
+import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
 const TableMemo = (props) => {
@@ -11,17 +11,22 @@ const TableMemo = (props) => {
     <section>
       <h2>{props.term}</h2>
       <section className="row">
-        {props.columns.map(column => <Column 
-        key={column.id} 
-        column={column}
-        onClickShowModal={handleClickShowModal} />)}
+        {props.columns.map((column, index_column) =>
+          <Column
+            key={column.id}
+            column={column}
+            index_column={index_column}
+            onClickShowModal={handleClickShowModal} />)}
       </section>
       {/* Modal pour créer une carte */}
       <Modal show={show} onHide={handleClickCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Ajout d'une carte</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+
+
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClickCloseModal}>
             Close
