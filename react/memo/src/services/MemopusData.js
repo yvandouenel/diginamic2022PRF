@@ -17,7 +17,7 @@ export default class MemopusData {
       })
       .then((token) => {
         this.token = token;
-        
+
       });
   }
 
@@ -56,7 +56,7 @@ export default class MemopusData {
           this.user.upwd = pwd;
         }
       });
-    
+
   };
 
   /**
@@ -85,7 +85,7 @@ export default class MemopusData {
       })
       .catch((error) => {
         console.log("error catché dans getTerms", error);
-        
+
       });
   };
   /**
@@ -96,12 +96,12 @@ export default class MemopusData {
   static getCards = (term_id) => {
     return fetch(
       this.url_server +
-        "/memo/list_cartes_term/" +
-        this.user.uid +
-        "/" +
-        term_id +
-        "&_format=json&time=" +
-        Math.floor(Math.random() * 10000),
+      "/memo/list_cards_term/" +
+      this.user.uid +
+      "/" +
+      term_id +
+      "&_format=json&time=" +
+      Math.floor(Math.random() * 10000),
       {
         credentials: "same-origin",
         method: "GET",
